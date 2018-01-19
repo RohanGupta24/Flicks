@@ -1,6 +1,6 @@
-# Flix
+# Flicks
 
-# Project 1 - Flix
+# Project 1 - Flicks
 
 Flix is a movies app using the [The Movie Database API](http://docs.themoviedb.apiary.io/#).
 
