@@ -8,11 +8,37 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
 
+
+class DetailViewController: UIViewController {
+    @IBOutlet var backDropImageView: UIImageView!
+    @IBOutlet var posterImageView: UIImageView!
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var releaseDateLabel: UILabel!
+    @IBOutlet var overviewLabel: UILabel!
+
+    var movie: [String: Any]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        if let movie = movie {
+            titleLabel.text = movie["title"] as? String
+            releaseDateLabel.text = movie["release_date"] as? String
+            overviewLabel.text = movie["overview"] as? String
+            let backdropPathString = movie["backdrop_path"] as! String
+            let posterPathString = movie["poster_path"] as! String
+            let baseURLString = "https://image.tmdb.org/t/p/w500"
+            
+            let backdropURL = URL(string: baseURLString + backdropPathString)!
+            backDropImageView.af_setImage(withURL: backdropURL)
+            
+            let posterPathURL = URL(string: baseURLString + posterPathString)!
+            posterImageView.af_setImage(withURL: posterPathURL)
+            
+            
+        
+        }
         // Do any additional setup after loading the view.
     }
 
